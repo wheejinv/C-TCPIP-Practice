@@ -14,8 +14,7 @@ int  main(int argc, char *argv[])
   char message[30];
   int  str_len;
 
-  if (argc != 3)
-  {
+  if (argc != 3) {
     printf("Usage : %s <IP> <port>", argv[0]);
     exit(1);
   }
@@ -31,6 +30,8 @@ int  main(int argc, char *argv[])
   serv_addr.sin_addr.s_addr = inet_addr(argv[1]);
   serv_addr.sin_port        = htons(atoi(argv[2]));
 
+  /* int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+     성공 시 0, 실패 시 -1  */
   if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) == -1) {
     error_handling("connect() error!");
   }

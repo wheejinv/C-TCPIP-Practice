@@ -43,6 +43,8 @@ int  main(int argc, char *argv[])
     error_handling("bind() error");
   }
 
+  /* int listen(int sockfd, int backlog);
+     성공 시 0, 실패 시 -1 반환 */
   if (listen(serv_sock, 5) == -1) {
     error_handling("listen() error");
   }
@@ -50,7 +52,8 @@ int  main(int argc, char *argv[])
   clnt_addr_size = sizeof(clnt_addr);
 
   /* int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
-     성공 시 파일 디스크립터, 실패 시 -1 반환  */
+     성공 시 파일 디스크립터, 실패 시 -1 반환
+     연결요청이 없는 상태에서 이 함수가 호출되면, 연결요청이 있을 때까지 함수는 반환하지 않는다.*/
   clnt_sock = accept(serv_sock,
                      (struct sockaddr *)&clnt_addr,
                      &clnt_addr_size);
