@@ -4,8 +4,8 @@
 
 아래는 관련 레퍼런스를 링크합니다.
 ### Linux
-[socket](http://man7.org/linux/man-pages/man2/socket.2.html)
-[bind](http://man7.org/linux/man-pages/man2/bind.2.html)
+[socket](http://man7.org/linux/man-pages/man2/socket.2.html),
+[bind](http://man7.org/linux/man-pages/man2/bind.2.html),
 [accept](http://man7.org/linux/man-pages/man2/accept.2.html)
 
 ### Windows
