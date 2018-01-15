@@ -1,9 +1,12 @@
 # C-Socket-Practice
 
-윤성우 열혈 TCP/IP 스터디하는 코드입니다.
+윤성우 열혈 TCP/IP 스터디하는 저장소입니다.  
 
+아래는 관련 레퍼런스를 링크합니다.
 ### Linux
-Linux socket 프로그래밍
+[socket](http://man7.org/linux/man-pages/man2/socket.2.html)
+[bind](http://man7.org/linux/man-pages/man2/bind.2.html)
+[accept](http://man7.org/linux/man-pages/man2/accept.2.html)
 
 ### Windows
-Windows socket 프로그래밍
+[socket](https://msdn.microsoft.com/en-us/library/windows/desktop/ms740506(v=vs.85).aspx)

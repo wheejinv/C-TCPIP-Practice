@@ -23,6 +23,8 @@ int  main(int argc, char *argv[])
     exit(1);
   }
 
+  /* int socket(int domain, int type, int protocol);
+     성공 시 파일 디스크립터, 실패 시 -1 반환. */
   serv_sock = socket(PF_INET, SOCK_STREAM, 0);
 
   if (serv_sock == -1) {
@@ -34,6 +36,9 @@ int  main(int argc, char *argv[])
   serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
   serv_addr.sin_port        = htons(atoi(argv[1]));
 
+
+  /* int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+     성공 시 0, 실패 시 -1 반환 */
   if (bind(serv_sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) == -1) {
     error_handling("bind() error");
   }
@@ -43,9 +48,12 @@ int  main(int argc, char *argv[])
   }
 
   clnt_addr_size = sizeof(clnt_addr);
-  clnt_sock      = accept(serv_sock,
-                          (struct sockaddr *)&clnt_addr,
-                          &clnt_addr_size);
+
+  /* int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+     성공 시 파일 디스크립터, 실패 시 -1 반환  */
+  clnt_sock = accept(serv_sock,
+                     (struct sockaddr *)&clnt_addr,
+                     &clnt_addr_size);
 
   if (clnt_sock == -1) {
     error_handling("accept() error");
