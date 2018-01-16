@@ -19,6 +19,8 @@ int  main(int argc, char *argv[])
     exit(1);
   }
 
+  /* int socket(int domain, int type, int protocol);
+     성공 시 파일 디스크립터, 실패 시 -1 반환 */
   sock = socket(PF_INET, SOCK_STREAM, 0);
 
   if (sock == -1) {

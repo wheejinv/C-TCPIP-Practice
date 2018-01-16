@@ -6,6 +6,9 @@
 ### Linux
 #### socket
 [socket](http://man7.org/linux/man-pages/man2/socket.2.html)  
+- int socket(int domain, int type, int protocol)
+   성공 시 파일 디스크립터, 실패 시 -1 반환  
+
 [bind](http://man7.org/linux/man-pages/man2/bind.2.html)  
 [listen](http://man7.org/linux/man-pages/man2/listen.2.html)  
 [accept](http://man7.org/linux/man-pages/man2/accept.2.html)  
@@ -23,4 +26,4 @@
 - ws2_32.lib 라이브러리를 링크시켜야 한다.  
   - 프로젝트 단위 링크 방법: 프로젝트 '속성' - '구성 속성' - '링커' - '입력' - '추가 종속성' - 'ws2_32.lib' 추가.  
 
-[socket](https://msdn.microsoft.com/en-us/library/windows/desktop/ms740506(v=vs.85).aspx)
+[socket](https://msdn.microsoft.com/en-us/library/windows/desktop/ms740506(v=vs.85).aspx)  

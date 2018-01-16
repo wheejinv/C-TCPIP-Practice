@@ -22,29 +22,32 @@ int  main(int argc, char *argv[])
     ErrorHandling("WSAStartup() error!");
   }
 
+  /* SOCKET socket(int af, int type, int protocol);
+     성공 시 소켓 핸들, 실패 시 INVALID_SOCKET 반환 */
   hServSock = socket(PF_INET, SOCK_STREAM, 0);
 
   if (hServSock == INVALID_SOCKET) {
-	  ErrorHandling("socket() error");
+    ErrorHandling("socket() error");
   }
 
   memset(&servAddr, 0, sizeof(servAddr));
-  servAddr.sin_family = AF_INET;
+  servAddr.sin_family      = AF_INET;
   servAddr.sin_addr.s_addr = htonl(INADDR_ANY);
-  servAddr.sin_port = htons(atoi(argv[1]));
+  servAddr.sin_port        = htons(atoi(argv[1]));
 
-  if (bind(hServSock, (SOCKADDR*)&servAddr, sizeof(servAddr)) == SOCKET_ERROR) {
-	  ErrorHandling("bind() error");
+  if (bind(hServSock, (SOCKADDR *)&servAddr, sizeof(servAddr)) == SOCKET_ERROR) {
+    ErrorHandling("bind() error");
   }
 
   if (listen(hServSock, 5) == SOCKET_ERROR) {
-	  ErrorHandling("listen() error");
+    ErrorHandling("listen() error");
   }
 
   szClntAddr = sizeof(clntAddr);
-  hClntSock = accept(hServSock, (SOCKADDR*)&clntAddr, &szClntAddr);
+  hClntSock  = accept(hServSock, (SOCKADDR *)&clntAddr, &szClntAddr);
+
   if (hClntSock == INVALID_SOCKET) {
-	  ErrorHandling("accept() error");
+    ErrorHandling("accept() error");
   }
 
   send(hClntSock, message, sizeof(message), 0);
@@ -57,7 +60,7 @@ int  main(int argc, char *argv[])
 
 void ErrorHandling(char *message)
 {
-	fputs(message, stderr);
-	fputc('\n', stderr);
-	exit(1);
+  fputs(message, stderr);
+  fputc('\n', stderr);
+  exit(1);
 }
