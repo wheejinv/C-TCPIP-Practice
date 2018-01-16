@@ -19,12 +19,9 @@ int  main(void)
     printf("error fd : %d", fd);
   }
 
-  printf("O_CREAT: %d, O_WRONLY: %d, O_TRUNC: %d", O_CREAT, O_WRONLY, O_TRUNC);
-
   if (fd == -1) {
     error_handling("open() error!");
   }
-  printf("file descriptor: %d \n", fd);
 
   if (write(fd, buf, sizeof(buf)) == -1) {
     error_handling("write() error!");
