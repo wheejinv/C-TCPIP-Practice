@@ -9,6 +9,7 @@
 [listen](http://man7.org/linux/man-pages/man2/listen.2.html)  
 [accept](http://man7.org/linux/man-pages/man2/accept.2.html)  
 [connect](http://man7.org/linux/man-pages/man2/connect.2.html)  
+[open](http://man7.org/linux/man-pages/man2/open.2.html)  
 
 ### Windows
 [socket](https://msdn.microsoft.com/en-us/library/windows/desktop/ms740506(v=vs.85).aspx)
