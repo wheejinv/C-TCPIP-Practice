@@ -4,9 +4,8 @@
 
 아래는 관련 레퍼런스를 링크합니다.
 ### Linux
-#### socket
 [socket](http://man7.org/linux/man-pages/man2/socket.2.html)  
-- int socket(int domain, int type, int protocol)
+- int socket(int domain, int type, int protocol);  
    성공 시 파일 디스크립터, 실패 시 -1 반환  
 
 [bind](http://man7.org/linux/man-pages/man2/bind.2.html)  
@@ -14,7 +13,6 @@
 [accept](http://man7.org/linux/man-pages/man2/accept.2.html)  
 [connect](http://man7.org/linux/man-pages/man2/connect.2.html)  
 
-#### file io
 리눅스에서의 소켓조작은 파일조작과 동일하게 간주된다. 리눅스는 소켓을 파일의 일종으로 구분한다.  
 [open](http://man7.org/linux/man-pages/man2/open.2.html)  
 [write](http://man7.org/linux/man-pages/man2/write.2.html)  
