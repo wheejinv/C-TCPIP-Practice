@@ -290,3 +290,4 @@ __pycache__/
 #add by whee
 *.exe
 *.out
+*.txt
