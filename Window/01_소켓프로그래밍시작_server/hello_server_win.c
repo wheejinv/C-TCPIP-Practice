@@ -18,6 +18,9 @@ int  main(int argc, char *argv[])
     exit(1);
   }
 
+  /* int WSAStartup(WORD wVersionRequested, LPWSADATA lpWSAData );
+     성공 시 0, 실패 시 0이 아닌 에러코드 값 반환
+   */
   if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
     ErrorHandling("WSAStartup() error!");
   }
@@ -35,16 +38,23 @@ int  main(int argc, char *argv[])
   servAddr.sin_addr.s_addr = htonl(INADDR_ANY);
   servAddr.sin_port        = htons(atoi(argv[1]));
 
+  /* int bind(SOCKET s, const struct sockaddr *name, int namelen );
+     성공 시 소켓 핸들, 실패 시 INVALID_SOCKET 반환 */
   if (bind(hServSock, (SOCKADDR *)&servAddr, sizeof(servAddr)) == SOCKET_ERROR) {
     ErrorHandling("bind() error");
   }
 
+  /* int listen(SOCKET s, int backlog);
+     성공 시 0, 실패 시 SOCKET_ERROR 반환 */
   if (listen(hServSock, 5) == SOCKET_ERROR) {
     ErrorHandling("listen() error");
   }
 
   szClntAddr = sizeof(clntAddr);
-  hClntSock  = accept(hServSock, (SOCKADDR *)&clntAddr, &szClntAddr);
+
+  /* SOCKET accept(SOCKET s, struct sockaddr *addr, int *addrlen);
+     성공 시 소켓 핸들, 실패 시 INVALID_SOCKET 반환 */
+  hClntSock = accept(hServSock, (SOCKADDR *)&clntAddr, &szClntAddr);
 
   if (hClntSock == INVALID_SOCKET) {
     ErrorHandling("accept() error");
