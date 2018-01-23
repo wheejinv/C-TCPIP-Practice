@@ -19,13 +19,12 @@ int  main(void)
     printf("error fd : %d", fd);
   }
 
-  printf("O_CREAT: %d, O_WRONLY: %d, O_TRUNC: %d", O_CREAT, O_WRONLY, O_TRUNC);
-
   if (fd == -1) {
     error_handling("open() error!");
   }
-  printf("file descriptor: %d \n", fd);
 
+  /* ssize_t write(int fd, const void *buf, size_t count);
+     성공 시 전달한 바이트 수, 실패 시 -1 반환 */
   if (write(fd, buf, sizeof(buf)) == -1) {
     error_handling("write() error!");
   }
