@@ -11,8 +11,8 @@
 
 [bind](http://man7.org/linux/man-pages/man2/bind.2.html)  
 -----
-- `int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);`
-- 성공 시 0, 실패 시 -1 반환
+`int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);`
+성공 시 0, 실패 시 -1 반환
 
 [listen](http://man7.org/linux/man-pages/man2/listen.2.html)  
 [accept](http://man7.org/linux/man-pages/man2/accept.2.html)  
