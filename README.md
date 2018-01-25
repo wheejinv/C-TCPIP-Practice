@@ -2,9 +2,8 @@
 
 윤성우 열혈 TCP/IP 스터디하는 저장소입니다.  
 
-아래는 관련 레퍼런스를 링크합니다.
 ## Linux
-### Linux Socket API
+### Linux Socket API  
 #### [socket](http://man7.org/linux/man-pages/man2/socket.2.html)  
 성공 시 파일 디스크립터, 실패 시 -1 반환  
 `int socket(int domain, int type, int protocol);`  
@@ -51,7 +50,7 @@
 #### WSAStartup  
 윈속 프로그래밍을 할 때에는 반드시 WSAStartup 함수를 호출해서, 프로그램에서 요구하는 윈도우 소켓 버전을 알리고, 해당 버전을 지원하는 라이브러리의 초기화 작업을 진행해야 한다.  
 성공 시 0, 실패 시 0이 아닌 에러코드 값 반환  
-`WSAStartup(WORD wVersionRequested, LPWSADATA lpWSAData );`
+`WSAStartup(WORD wVersionRequested, LPWSADATA lpWSAData );`  
 LPWSADATA 는 WSADATA 구조체 변수의 포인터 형이다.  
 
 #### WSACleanup
