@@ -11,6 +11,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02_소켓의 타입과 프�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02_소켓의 타입과 프로토콜의 설정_client", "02_소켓의 타입과 프로토콜의 설정_client\02_소켓의 타입과 프로토콜의 설정_client.vcxproj", "{454248D0-718A-426D-8B54-556FB1399C0C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "04_TCP 기반 서버_클라이언트_client", "04_TCP 기반 서버_클라이언트_client\04_TCP 기반 서버_클라이언트_client.vcxproj", "{62039F15-775D-4855-B466-4EB0F3396943}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "04_TCP 기반 서버_클라이언트_server", "04_TCP 기반 서버_클라이언트_server\04_TCP 기반 서버_클라이언트_server.vcxproj", "{666C212D-F91D-4D62-A1DA-4C39C29A89E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +55,22 @@ Global
 		{454248D0-718A-426D-8B54-556FB1399C0C}.Release|x64.Build.0 = Release|x64
 		{454248D0-718A-426D-8B54-556FB1399C0C}.Release|x86.ActiveCfg = Release|Win32
 		{454248D0-718A-426D-8B54-556FB1399C0C}.Release|x86.Build.0 = Release|Win32
+		{62039F15-775D-4855-B466-4EB0F3396943}.Debug|x64.ActiveCfg = Debug|x64
+		{62039F15-775D-4855-B466-4EB0F3396943}.Debug|x64.Build.0 = Debug|x64
+		{62039F15-775D-4855-B466-4EB0F3396943}.Debug|x86.ActiveCfg = Debug|Win32
+		{62039F15-775D-4855-B466-4EB0F3396943}.Debug|x86.Build.0 = Debug|Win32
+		{62039F15-775D-4855-B466-4EB0F3396943}.Release|x64.ActiveCfg = Release|x64
+		{62039F15-775D-4855-B466-4EB0F3396943}.Release|x64.Build.0 = Release|x64
+		{62039F15-775D-4855-B466-4EB0F3396943}.Release|x86.ActiveCfg = Release|Win32
+		{62039F15-775D-4855-B466-4EB0F3396943}.Release|x86.Build.0 = Release|Win32
+		{666C212D-F91D-4D62-A1DA-4C39C29A89E1}.Debug|x64.ActiveCfg = Debug|x64
+		{666C212D-F91D-4D62-A1DA-4C39C29A89E1}.Debug|x64.Build.0 = Debug|x64
+		{666C212D-F91D-4D62-A1DA-4C39C29A89E1}.Debug|x86.ActiveCfg = Debug|Win32
+		{666C212D-F91D-4D62-A1DA-4C39C29A89E1}.Debug|x86.Build.0 = Debug|Win32
+		{666C212D-F91D-4D62-A1DA-4C39C29A89E1}.Release|x64.ActiveCfg = Release|x64
+		{666C212D-F91D-4D62-A1DA-4C39C29A89E1}.Release|x64.Build.0 = Release|x64
+		{666C212D-F91D-4D62-A1DA-4C39C29A89E1}.Release|x86.ActiveCfg = Release|Win32
+		{666C212D-F91D-4D62-A1DA-4C39C29A89E1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
