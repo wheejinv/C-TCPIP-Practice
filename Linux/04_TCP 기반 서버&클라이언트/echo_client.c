@@ -48,8 +48,9 @@ int main(int argc, char *argv[] )
       break;
     }
 
-    /* 
-     */
+    /* read, write 함수가 호출될 때마다 문자열 단위로 실제 입출력이 이뤄진다.
+       1. TCP 클라이언트에서 둘 이상의 write 함수호출로 전달된 문자열 정보가 묶여서 한번에 전송될 수 있다.
+       2. 서버에서는 문자열을 두개의 패킷으로 나눠 받을 수 있는 경우도 고려가 안되있다.  */
     write(sock, msg, strlen(msg));
     str_len = read(sock, msg, BUF_SIZE - 1 );
     msg[str_len] = 0;
