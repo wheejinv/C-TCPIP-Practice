@@ -32,13 +32,21 @@
 `int open(const char *pathname, int flags);`  
 `int open(const char *pathname, int flags, mode_t mode);`  
 
-#### [write](http://man7.org/linux/man-pages/man2/write.2.html)  
+#### [write(tcp)](http://man7.org/linux/man-pages/man2/write.2.html)  
 성공 시 전달한 바이트 수, 실패 시 -1 반환  
 `ssize_t write(int fd, const void *buf, size_t count);`
 
-#### [read](http://man7.org/linux/man-pages/man2/read.2.html)  
+#### [read(tcp)](http://man7.org/linux/man-pages/man2/read.2.html)  
 성공 시 수신한 바이트 수(단 파일의 끝을 만나면 0), 실패 시 -1 반환  
 `ssize_t read(int fd, void *buf, size_t count);`  
+
+#### [sendto(udp)](http://man7.org/linux/man-pages/man3/sendto.3p.html)  
+성공 시 전송된 바이트 수, 실패 시 -1 반환  
+`ssize_t sendto(int socket, const void *message, size_t length, int flags, const struct sockaddr *dest_addr,socklen_t dest_len);`  
+
+#### [recvfrom(udp)](http://man7.org/linux/man-pages/man3/recvfrom.3p.html)  
+성공 시 수신한 바이트 수, 실패 시 -1 반환  
+` ssize_t recvfrom(int socket, void *restrict buffer, size_t length, int flags, struct sockaddr *restrict address, socklen_t *restrict address_len);`  
 
 
 ## Windows  
@@ -82,10 +90,18 @@ LPWSADATA 는 WSADATA 구조체 변수의 포인터 형이다.
 > 리눅스는 소켓도 파일로 간주하기 때문에, 파일 입출력 함수인 read와 write 를 이용해서 데이터를 송수힌 할 수 있다.  
 하지만 윈도우는 파일 입출력 함수와 소켓 입출력 함수가 구분되어 있다. 아래는 윈도우 소켓 기반의 데이터 입출력 함수이다.
 
-#### send  
+#### send(tcp)  
 성공 시 전송된 바이트 수, 실패 시 SOCKET_ERROR 반환  
 `int send(SOCKET s, const char *buf, int len, int flags);`  
 
-#### recv  
+#### recv(tcp)  
 성공 시 수신한 바이트 수(단 EOF 전송 시 O), 실패 시 SOCKET_ERROR 반환  
 `int recv(SOCKET s, const char *buf, int len, int flags);`  
+
+#### sendto(udp)  
+성공 시 전송된 바이트 수, 실패 시 SOCKET_ERROR 반환  
+`int sendto(SOCKET s, const char *buf, int len, int flags, const struct sockaddr* to, int tolen);`  
+
+#### recvfrom(udp)  
+성공 시 수신한 바이트 수, 실패 시 SOCKET_ERROR 반환  
+`int recvfrom(SOCKET s, char *buf, int len, int flags, struct sockaddr* from, int fromlen);`  
