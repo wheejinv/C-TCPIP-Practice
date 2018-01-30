@@ -8,6 +8,12 @@
 [CH 8\. IP주소와 도메인 이름 사이의 변환](./MD/CH8.md)<br>
 `도메인 이름, IP 를 사용해서 host 정보 얻어오기.`
 
+[CH 9\. 소켓의 다양한 옵션](./MD/CH9.md)<br>
+`소켓의 옵션 확인 및 설정 방법`
+
+[CH 10\. 멀티프로세스 기반의 서버 구현](.MD/CH10.md)<br>
+`...ing`
+
 ## Linux
 
 ### Linux Socket API
@@ -78,14 +84,24 @@ ssize_t read(int fd, void *buf, size_t count);
 
 ```c
 // 성공 시 전송된 바이트 수, 실패 시 -1 반환
-ssize_t sendto(int socket, const void *message, size_t length, int flags, const struct sockaddr *dest_addr,socklen_t dest_len);
+ssize_t sendto(int                    socket,
+               const void            *message,
+               size_t                 length,
+               int                    flags,
+               const struct sockaddr *dest_addr,
+               socklen_t              dest_len);
 ```
 
 #### [recvfrom(udp)](http://man7.org/linux/man-pages/man3/recvfrom.3p.html)
 
 ```c
 // 성공 시 수신한 바이트 수, 실패 시 -1 반환
-ssize_t recvfrom(int socket, void *restrict buffer, size_t length, int flags, struct sockaddr *restrict address, socklen_t *restrict address_len);
+ssize_t recvfrom(int                       socket,
+                 void *restrict            buffer,
+                 size_t                    length,
+                 int                       flags,
+                 struct sockaddr *restrict address,
+                 socklen_t *restrict       address_len);
 ```
 
 ## Windows
