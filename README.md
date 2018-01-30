@@ -11,7 +11,7 @@ Half-close 개념, 우아한 종료를 위한 shutdown
 
 #### [socket](http://man7.org/linux/man-pages/man2/socket.2.html)
 
-```
+```c
 // 성공 시 파일 디스크립터, 실패 시 -1 반환  
 int socket(int domain, int type, int protocol);
 ```
@@ -73,7 +73,7 @@ ssize_t read(int fd, void *buf, size_t count);
 
 #### [sendto(udp)](http://man7.org/linux/man-pages/man3/sendto.3p.html)
 
-```
+```c
 // 성공 시 전송된 바이트 수, 실패 시 -1 반환
 ssize_t sendto(int socket, const void *message, size_t length, int flags, const struct sockaddr *dest_addr,socklen_t dest_len);
 ```
