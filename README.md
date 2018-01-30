@@ -2,8 +2,9 @@
 
 윤성우 열혈 TCP/IP 스터디하는 저장소입니다.
 
-[ch7\. TCP 기반의 Half-close](./ch7.md)<br>
-Half-close 개념, 우아한 종료를 위한 shutdown
+[CH 7\. TCP 기반의 Half-close](./MD/CH7.md)<br>
+
+> Half-close 개념, 우아한 종료를 위한 shutdown
 
 ## Linux
 
@@ -26,7 +27,7 @@ int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 #### [listen](http://man7.org/linux/man-pages/man2/listen.2.html)
 
 ```c
-성공 시 0, 실패 시 -1 반환  
+// 성공 시 0, 실패 시 -1 반환  
 int listen(int sockfd, int backlog);
 ```
 
@@ -52,7 +53,7 @@ int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 #### [open](http://man7.org/linux/man-pages/man2/open.2.html)
 
 ```c
-성공 시 파일 디스크립터, 실패 시 -1 반환
+// 성공 시 파일 디스크립터, 실패 시 -1 반환
 int open(const char *pathname, int flags);
 int open(const char *pathname, int flags, mode_t mode);
 ```
@@ -94,14 +95,18 @@ ssize_t recvfrom(int socket, void *restrict buffer, size_t length, int flags, st
 
   - 프로젝트 단위 링크 방법: 프로젝트 '속성' - '구성 속성' - '링커' - '입력' - '추가 종속성' - 'ws2_32.lib' 추가.
 
-    ## Windows Socket API
+## Windows Socket API
 
-    #### WSAStartup
+### WSAStartup
 
-    윈속 프로그래밍을 할 때에는 반드시 WSAStartup 함수를 호출해서, 프로그램에서 요구하는 윈도우 소켓 버전을 알리고, 해당 버전을 지원하는 라이브러리의 초기화 작업을 진행해야 한다.<br>
-    성공 시 0, 실패 시 0이 아닌 에러코드 값 반환<br>
-    `WSAStartup(WORD wVersionRequested, LPWSADATA lpWSAData );`<br>
-    LPWSADATA 는 WSADATA 구조체 변수의 포인터 형이다.
+윈속 프로그래밍을 할 때에는 반드시 WSAStartup 함수를 호출해서, 프로그램에서 요구하는 윈도우 소켓 버전을 알리고, 해당 버전을 지원하는 라이브러리의 초기화 작업을 진행해야 한다.<br>
+
+- `LPWSADATA` : WSADATA 구조체 변수의 포인터 형이다.
+
+```c
+// 성공 시 0, 실패 시 0이 아닌 에러코드 값 반환
+WSAStartup(WORD wVersionRequested, LPWSADATA lpWSAData );
+```
 
 ### WSACleanup
 
@@ -149,8 +154,8 @@ int connect(SOCKET s, const struct sockaddr *name, int namelen );
 
 ### Windows Socket Data Reception, Transmission
 
-> 리눅스는 소켓도 파일로 간주하기 때문에, 파일 입출력 함수인 read와 write 를 이용해서 데이터를 송수힌 할 수 있다.<br>
-> 하지만 윈도우는 파일 입출력 함수와 소켓 입출력 함수가 구분되어 있다. 아래는 윈도우 소켓 기반의 데이터 입출력 함수이다.
+리눅스는 소켓도 파일로 간주하기 때문에, 파일 입출력 함수인 read와 write 를 이용해서 데이터를 송수신 할 수 있다.<br>
+하지만 윈도우는 파일 입출력 함수와 소켓 입출력 함수가 구분되어 있다. 아래는 윈도우 소켓 기반의 데이터 입출력 함수이다.
 
 #### send(tcp)
 
