@@ -2,6 +2,9 @@
 
 윤성우 열혈 TCP/IP 스터디하는 저장소입니다.  
 
+[ch7. TCP 기반의 Half-close](./test.md)  
+Half-close  
+
 ## Linux
 ### Linux Socket API  
 #### [socket](http://man7.org/linux/man-pages/man2/socket.2.html)  
@@ -85,6 +88,10 @@ LPWSADATA 는 WSADATA 구조체 변수의 포인터 형이다.
 #### connect
 성공 시 0, 실패 시 SOCKET_ERROR 반환  
 `int connect(SOCKET s, const struct sockaddr *name, int namelen );`  
+
+#### shotdown  
+성공 시 0, 실패 시 -1 반환  
+`int shutdown(int sock, int howto);`  
 
 ### Windows Socket Data Reception, Transmission   
 > 리눅스는 소켓도 파일로 간주하기 때문에, 파일 입출력 함수인 read와 write 를 이용해서 데이터를 송수힌 할 수 있다.  
