@@ -18,21 +18,21 @@ int socket(int domain, int type, int protocol);
 
 #### [bind](http://man7.org/linux/man-pages/man2/bind.2.html)
 
-```
+```c
 // 성공 시 0, 실패 시 -1 반환  
 int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 ```
 
 #### [listen](http://man7.org/linux/man-pages/man2/listen.2.html)
 
-```
+```c
 성공 시 0, 실패 시 -1 반환  
 int listen(int sockfd, int backlog);
 ```
 
 #### [accept](http://man7.org/linux/man-pages/man2/accept.2.html)
 
-```
+```c
 // 성공 시 파일 디스크립터, 실패 시 -1 반환
 // 연결요청이 없는 상태에서 이 함수가 호출되면, 연결요청이 있을 때까지 함수는 반환하지 않는다.
 int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
@@ -40,7 +40,7 @@ int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
 
 #### [connect](http://man7.org/linux/man-pages/man2/connect.2.html)
 
-```
+```c
 // 성공 시 0, 실패 시 -1
 int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 ```
@@ -51,7 +51,7 @@ int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 
 #### [open](http://man7.org/linux/man-pages/man2/open.2.html)
 
-```
+```c
 성공 시 파일 디스크립터, 실패 시 -1 반환
 int open(const char *pathname, int flags);
 int open(const char *pathname, int flags, mode_t mode);
@@ -59,14 +59,14 @@ int open(const char *pathname, int flags, mode_t mode);
 
 #### [write(tcp)](http://man7.org/linux/man-pages/man2/write.2.html)
 
-```
+```c
 // 성공 시 전달한 바이트 수, 실패 시 -1 반환
 ssize_t write(int fd, const void *buf, size_t count);
 ```
 
 #### [read(tcp)](http://man7.org/linux/man-pages/man2/read.2.html)
 
-```
+```c
 // 성공 시 수신한 바이트 수(단 파일의 끝을 만나면 0), 실패 시 -1 반환
 ssize_t read(int fd, void *buf, size_t count);
 ```
@@ -80,7 +80,7 @@ ssize_t sendto(int socket, const void *message, size_t length, int flags, const 
 
 #### [recvfrom(udp)](http://man7.org/linux/man-pages/man3/recvfrom.3p.html)
 
-```
+```c
 // 성공 시 수신한 바이트 수, 실패 시 -1 반환
 ssize_t recvfrom(int socket, void *restrict buffer, size_t length, int flags, struct sockaddr *restrict address, socklen_t *restrict address_len);
 ```
@@ -107,42 +107,42 @@ ssize_t recvfrom(int socket, void *restrict buffer, size_t length, int flags, st
 
 프로그램이 종료 되기 직전에 실행하는 것이 보통이며, 할당된 윈속 라이브러리를 윈도우 운영체제에 반환한 다.<br>
 
-```
+```c
 // 성공 시 0, 실패 시 SOCKET_ERROR 반환
 int WSACleanup(void);
 ```
 
 ### [socket](https://msdn.microsoft.com/en-us/library/windows/desktop/ms740506(v=vs.85).aspx)
 
-```
+```c
 // 성공 시 소켓 핸들, 실패 시 INVALID_SOCKET 반환
 SOCKET socket(int af, int type, int protocol);
 ```
 
 ### bind
 
-```
+```c
 // 성공 시 소켓 핸들, 실패 시 INVALID_SOCKET 반환
 int bind(SOCKET s, const struct sockaddr *name, int namelen );
 ```
 
 ### listen
 
-```
+```c
 // 성공 시 0, 실패 시 SOCKET_ERROR 반환
 int listen(SOCKET s, int backlog);
 ```
 
 ### accept
 
-```
+```c
 // 성공 시 소켓 핸들, 실패 시 INVALID_SOCKET 반환
 SOCKET accept(SOCKET s, struct sockaddr *addr, int *addrlen);
 ```
 
 ### connect
 
-```
+```c
 // 성공 시 0, 실패 시 SOCKET_ERROR 반환
 int connect(SOCKET s, const struct sockaddr *name, int namelen );
 ```
@@ -154,28 +154,28 @@ int connect(SOCKET s, const struct sockaddr *name, int namelen );
 
 #### send(tcp)
 
-```
+```c
 // 성공 시 전송된 바이트 수, 실패 시 SOCKET_ERROR 반환
 int send(SOCKET s, const char *buf, int len, int flags);
 ```
 
 #### recv(tcp)
 
-```
+```c
 // 성공 시 수신한 바이트 수(단 EOF 전송 시 O), 실패 시 SOCKET_ERROR 반환
 int recv(SOCKET s, const char *buf, int len, int flags);
 ```
 
 #### sendto(udp)
 
-```
+```c
 // 성공 시 전송된 바이트 수, 실패 시 SOCKET_ERROR 반환
 int sendto(SOCKET s, const char *buf, int len, int flags, const struct sockaddr* to, int tolen);
 ```
 
 #### recvfrom(udp)
 
-```
+```c
 // 성공 시 수신한 바이트 수, 실패 시 SOCKET_ERROR 반환
 int recvfrom(SOCKET s, char *buf, int len, int flags, struct sockaddr* from, int fromlen);
 ```
