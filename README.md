@@ -3,8 +3,10 @@
 윤성우 열혈 TCP/IP 스터디하는 저장소입니다.
 
 [CH 7\. TCP 기반의 Half-close](./MD/CH7.md)<br>
+`Half-close 개념, 우아한 종료를 위한 shutdown`
 
-> Half-close 개념, 우아한 종료를 위한 shutdown
+[CH 8\. IP주소와 도메인 이름 사이의 변환](./MD/CH8.md)<br>
+`도메인 이름, IP 를 사용해서 host 정보 얻어오기.`
 
 ## Linux
 
@@ -13,21 +15,21 @@
 #### [socket](http://man7.org/linux/man-pages/man2/socket.2.html)
 
 ```c
-// 성공 시 파일 디스크립터, 실패 시 -1 반환  
+// 성공 시 파일 디스크립터, 실패 시 -1 반환
 int socket(int domain, int type, int protocol);
 ```
 
 #### [bind](http://man7.org/linux/man-pages/man2/bind.2.html)
 
 ```c
-// 성공 시 0, 실패 시 -1 반환  
+// 성공 시 0, 실패 시 -1 반환
 int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 ```
 
 #### [listen](http://man7.org/linux/man-pages/man2/listen.2.html)
 
 ```c
-// 성공 시 0, 실패 시 -1 반환  
+// 성공 시 0, 실패 시 -1 반환
 int listen(int sockfd, int backlog);
 ```
 
@@ -175,12 +177,22 @@ int recv(SOCKET s, const char *buf, int len, int flags);
 
 ```c
 // 성공 시 전송된 바이트 수, 실패 시 SOCKET_ERROR 반환
-int sendto(SOCKET s, const char *buf, int len, int flags, const struct sockaddr* to, int tolen);
+int sendto(SOCKET                 s,
+           const char            *buf,
+           int                    len,
+           int                    flags,
+           const struct sockaddr *to,
+           int                    tolen);
 ```
 
 #### recvfrom(udp)
 
 ```c
 // 성공 시 수신한 바이트 수, 실패 시 SOCKET_ERROR 반환
-int recvfrom(SOCKET s, char *buf, int len, int flags, struct sockaddr* from, int fromlen);
+int recvfrom(SOCKET           s,
+             char            *buf,
+             int              len,
+             int              flags,
+             struct sockaddr *from,
+             int              fromlen);
 ```
