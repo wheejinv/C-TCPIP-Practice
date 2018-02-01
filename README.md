@@ -12,7 +12,7 @@
 `소켓의 옵션 확인 및 설정 방법`
 
 [CH 10\. 멀티프로세스 기반의 서버 구현](./MD/CH10.md)<br>
-`...ing`
+`fork, waitpid, WIFEXITED, WEXITSTATUS, sigaction, 멀티태스킹 기반의 다중접속 서버, TCP의 입출력 루틴 분할.`
 
 ## Linux
 
