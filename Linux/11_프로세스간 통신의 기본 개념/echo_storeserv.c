@@ -1,9 +1,3 @@
-/*
-   1. 에코 서버(부모 프로세스)는 accept 함수 호출을 통해서 연결 요청을 수락한다.
-   2. 이때 얻게 되는 소켓의 파일 디스크립터를 자식 프로세스를 생성해서 넘겨준다.
-   3. 자식 프로세스는 전달받은 파일 디스크립터를 바탕으로 서비스를 제공한다.
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,7 +10,9 @@
 #define BUF_SIZE 1024
 void error_handling(char *message);
 void read_childproc(int sig);
+void ctrl_childProc(int sig);
 
+FILE *fp;
 int  main(int argc, char *argv[])
 {
   int serv_sock, clnt_sock;
@@ -33,13 +29,17 @@ int  main(int argc, char *argv[])
     exit(1);
   }
 
-  // 좀비 프로세스의 생성을 막기 위한 코드 구성
   act.sa_handler = read_childproc;
   sigemptyset(&act.sa_mask);
   act.sa_flags = 0;
 
-  // 0 : success, -1 : fail
+  struct sigaction actCtrlC;
+  actCtrlC.sa_handler = ctrl_childProc;
+  sigemptyset(&actCtrlC.sa_mask);
+  actCtrlC.sa_flags = 0;
+
   state = sigaction(SIGCHLD, &act, 0);
+  sigaction(SIGINT, &actCtrlC, 0);
 
   serv_sock = socket(PF_INET, SOCK_STREAM, 0);
   memset(&serv_adr, 0, sizeof(serv_adr));
@@ -55,6 +55,29 @@ int  main(int argc, char *argv[])
     error_handling("listen() error");
   }
 
+  // pipe 생성. write 는 1로 read는 0으로
+  int arrPipe[2];
+  pipe(arrPipe);
+  char fileBuf[BUF_SIZE];
+
+  fp = fopen("receive.txt", "wb+");
+
+  pid = fork();
+  if( pid == 0 ) {
+    close(serv_sock);
+
+    int read_cnt = 0;
+
+    while( (read_cnt = read(arrPipe[0], fileBuf, BUF_SIZE )) != 0 ) {
+      printf("read....\n");
+      fwrite((void *)fileBuf, 1, read_cnt, fp );
+    }
+
+    fclose(fp);
+  } else {
+    fclose(fp);
+  }
+
   while (1) {
     adr_sz    = sizeof(clnt_adr);
     clnt_sock = accept(serv_sock, (struct sockaddr *)&clnt_adr, &adr_sz);
@@ -65,9 +88,6 @@ int  main(int argc, char *argv[])
       puts("new client connected...");
     }
 
-    // 59행 accept 함수를 호출한 이후 fork 한다.
-    // 47행을 통해서 만들어진 소켓의 파일 디스크립터를
-    // 부모 프로세스와 자식 프로세스가 동시에 하나씩 갖게 된다.
     pid = fork();
 
     if (pid == -1) {
@@ -76,21 +96,17 @@ int  main(int argc, char *argv[])
     }
 
     if (pid == 0) {
-      // 자식 프로세스 서버 소켓을 닫는다고 닫아지지 않는다.
-      // 하나의 소켓에 두 개의 파일 디스크립터가 존재하는 경우,
-      // 두 개의 파일 디스크립터가 모두 종료되어야 소켓은 소멸한다.
       close(serv_sock);
 
-      while ((str_len = read(clnt_sock, buf, BUF_SIZE)) != 0) {
+      while ((str_len = read(clnt_sock, buf, BUF_SIZE)) != 0 ) {
         write(clnt_sock, buf, str_len);
+        write(arrPipe[1], buf, str_len);
       }
 
       close(clnt_sock);
-      puts("clinet disconnected...");
+      puts("client disconnected...");
       return 0;
     } else {
-      // 그래서 fork 함수 호출 후에는 서로에게 상관이 없는 소켓의
-      // 파일 디스크립터를 닫아줘야 한다.
       close(clnt_sock);
     }
   }
@@ -105,6 +121,17 @@ void read_childproc(int sig)
 
   pid = waitpid(-1, &status, WNOHANG);
   printf("removed proc id: %d \n", pid);
+}
+
+void ctrl_childProc(int sig) {
+  pid_t pid;
+  int   status;
+
+  pid = waitpid(-1, &status, WNOHANG);
+  printf("ctrl_childProc proc id: %d \n", pid);
+
+  fclose(fp);
+  exit(1);
 }
 
 void error_handling(char *message)
