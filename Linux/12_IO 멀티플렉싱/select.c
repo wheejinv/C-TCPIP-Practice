@@ -21,9 +21,10 @@ int main(int argc, char *argv[])
     // 구조체의 대입은 다음의 코드와 기능상 동일함.
     // memcpy(&temps,&reads,sizeof(temps));
     // 매우 중요: 원본의 유지를 위해서는 복사의 과정을 거쳐야 한다.
-    temps           = reads;
+    temps = reads;
 
     // select 함수 호출 후 타임아웃이 발생하기까지 남았던 시간으로 바뀐다.
+    // 그래서 반복문에 초기화 과정을 삽입한다.
     timeout.tv_sec  = 5;
     timeout.tv_usec = 0;
     result          = select(1, &temps, 0, 0, &timeout);
@@ -43,7 +44,6 @@ int main(int argc, char *argv[])
       }
     }
   }
-
 
   return 0;
 }
