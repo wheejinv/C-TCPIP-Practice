@@ -17,6 +17,9 @@
 [CH 11\. 프로세스간 통신의 기본 개념](./MD/CH11.md)<br>
 `파이프(PIPE) 기반의 프로세스간 통신(feat.fork)`
 
+[CH 12\. IO 멀티플렉싱](./MD/CH12.md)<br>
+`select에 대해 배움. epoll, IOCP 전 워밍업`
+
 ## Linux
 
 ### Linux Socket API
