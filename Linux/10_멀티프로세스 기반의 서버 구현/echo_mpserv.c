@@ -52,7 +52,7 @@ int  main(int argc, char *argv[])
   }
 
   if (listen(serv_sock, 5) == -1) {
-    error_handling("listen() error");
+    error_handling("listen() error");캌
   }
 
   while (1) {
