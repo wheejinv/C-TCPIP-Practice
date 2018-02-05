@@ -20,6 +20,9 @@
 [CH 12\. IO 멀티플렉싱](./MD/CH12.md)<br>
 `select에 대해 배움. epoll, IOCP 전 워밍업`
 
+[CH 13\. 다양한 입출력 함수들](./MD/CH13.md)<br>
+`ing...`
+
 ## Linux
 
 ### Linux Socket API
