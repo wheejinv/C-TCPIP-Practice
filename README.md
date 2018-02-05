@@ -21,6 +21,9 @@
 `select에 대해 배움. epoll, IOCP 전 워밍업`
 
 [CH 13\. 다양한 입출력 함수들](./MD/CH13.md)<br>
+`리눅스에서 send, recv, OOB, PEEK, DONTWAIT 옵션, writev, readv`
+
+[CH 14\. 멀티캐스트 & 브로드 캐스트](./MD/CH14.md)<br>
 `ing...`
 
 ## Linux
