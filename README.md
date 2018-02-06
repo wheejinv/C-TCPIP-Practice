@@ -24,7 +24,7 @@
 `리눅스에서 send, recv, OOB, PEEK, DONTWAIT 옵션, writev, readv`
 
 [CH 14\. 멀티캐스트 & 브로드 캐스트](./MD/CH14.md)<br>
-`ing...`
+`udp socket에서 옵션 설정 등 -> 멀티캐스트, 브로드 캐스트`
 
 ## Linux
 
