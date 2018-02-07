@@ -33,7 +33,10 @@
 `fdopen, fileno, 표준 입출력 함수 사용`
 
 [CH 16\. 입출력 스트림의 분리에 대한 나머지 이야기](./MD/CH16.md)<br>
-`ing`
+`FILE 구조체를 사용했을 시에 shutdown(Half-close) 방법, 파일 디스크립터의 복사 방법(dup, dup2)`
+
+[CH 17\. select보다 나은 epoll](./MD/CH17.md)<br>
+`ing..`
 
 ---
 

@@ -64,8 +64,8 @@ int  main(int argc, char *argv[])
       fgets(message, BUF_SIZE, readfp);
       fputs(message, writefp);
 
-			// fflush 함수로 출력 버퍼를 비워서 소켓의 출력 버퍼로 보내줘야 한다.
-			// 그렇지 않으면 클라이언트로 데이터가 전송된다고 보장할 수 없다.
+      // fflush 함수로 출력 버퍼를 비워서 소켓의 출력 버퍼로 보내줘야 한다.
+      // 그렇지 않으면 클라이언트로 데이터가 전송된다고 보장할 수 없다.
       fflush(writefp);
     }
     fclose(readfp);
