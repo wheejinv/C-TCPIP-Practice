@@ -36,7 +36,10 @@
 `FILE 구조체를 사용했을 시에 shutdown(Half-close) 방법, 파일 디스크립터의 복사 방법(dup, dup2)`
 
 [CH 17\. select보다 나은 epoll](./MD/CH17.md)<br>
-`select와 비교해서 epoll이 좋은 점, epoll_event, epoll_create, epoll_ctl, epoll_wait 함수 설명`
+`epoll이 좋은 점, epoll_event, epoll_create, epoll_ctl, epoll_wait, fcntl 함수, 레벨 트리거, 엣지 트리거`
+
+[CH 18\. 멀티쓰레드 기반의 서버구현](./MD/CH18.md)<br>
+`...ing`
 
 ---
 
