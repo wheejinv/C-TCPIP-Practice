@@ -18,3 +18,7 @@ int main(void)
   fclose(fp);
   return 0;
 }
+
+ // whee@DESKTOP-WHEE-RYZEN:/socket$ ./a.out
+ // First file descriptor: 3
+ // Second file descriptor: 3

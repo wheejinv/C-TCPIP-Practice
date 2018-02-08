@@ -66,7 +66,7 @@ int  main(int argc, char *argv[])
           adr_sz    = sizeof(clnt_adr);
           clnt_sock = accept(serv_sock, (struct sockaddr *)&clnt_adr, &adr_sz);
 
-          event.events  = EPOLLIN | EPOLLRDHUP;
+          event.events  = EPOLLIN;
           event.data.fd = clnt_sock;
           epoll_ctl(fd_epoll, EPOLL_CTL_ADD, clnt_sock, &event);
           printf("connected client : %d\n", clnt_sock);
