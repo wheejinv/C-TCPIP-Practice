@@ -39,7 +39,7 @@
 `epoll이 좋은 점, epoll_event, epoll_create, epoll_ctl, epoll_wait, fcntl 함수, 레벨 트리거, 엣지 트리거`
 
 [CH 18\. 멀티쓰레드 기반의 서버구현](./MD/CH18.md)<br>
-`...ing`
+`pthread_create, pthread_join, 워커 쓰레드 모델, 임계영역, 쓰레드 동기화 기법(Mutex, Semaphore), pthread_mutext_init, pthread_mutext_destroy, sem_post, sem_wait`
 
 ---
 
