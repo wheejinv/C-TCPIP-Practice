@@ -15,14 +15,17 @@ void  send_msg(char *msg,
                int   len);
 void  error_handling(char *msg);
 
+// 서버에 접속한 클라이언트의 소켓 관리를 위한 변수와 배열이다.
+// 이 둘의 접근과 관련있는 코드가 임계영역을 구성하게 된다.
 int clnt_cnt = 0;
 int clnt_socks[MAX_CLNT];
+
 pthread_mutex_t mutx;
 
 int main(int argc, char *argv[])
 {
   int serv_sock, clnt_sock;
-  struct sockaddr_in, serv_adr, clnt_adr;
+  struct sockaddr_in serv_adr, clnt_adr;
   int clnt_adr_sz;
   pthread_t t_id;
 
@@ -31,12 +34,12 @@ int main(int argc, char *argv[])
     exit(1);
   }
 
-  pthread_mutex_init(&mutex, NULL);
+  pthread_mutex_init(&mutx, NULL);
   serv_sock = socket(PF_INET, SOCK_STREAM, 0);
 
   memset(&serv_adr, 0, sizeof(serv_adr));
   serv_adr.sin_family       = AF_INET;
-  serv_adr.sin_adddr.s_addr = htonl(INADDR_ANY);
+  serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
   serv_adr.sin_port         = htons(atoi(argv[1]));
 
   if (bind(serv_sock, (struct sockaddr *)&serv_adr, sizeof(serv_adr)) == -1) {
@@ -50,13 +53,20 @@ int main(int argc, char *argv[])
   while (1)
   {
     clnt_adr_sz = sizeof(clnt_adr);
-    clnt_sock   = accept(serv_sock, (struct sockaddr *)&clnt_adr, &clnt_adr_s);
+    clnt_sock   = accept(serv_sock, (struct sockaddr *)&clnt_adr, &clnt_adr_sz);
 
     pthread_mutex_lock(&mutx);
-    clnt_socks[clnt_clnt++] = clnt_sock;
+
+    // 새로운 연결이 형성될 때마다
+    // 변수 clnt_cnt와 배열 clnt_socks에 해당 정보를 등록한다.
+    clnt_socks[clnt_cnt++] = clnt_sock;
     pthread_mutex_unlock(&mutx);
 
+    // 추가된 클라이언트에게 서비스를 제공하기 위한 쓰레드를 생성한다.
+    // 그리고 이 쓰레드에 의해서 handle_clnt 함수가 실행된다.
     pthread_create(&t_id, NULL, handle_clnt, (void *)&clnt_sock);
+
+    // 이 함수를 통해 종료된 쓰레드가 메모리에서 완전히 소멸되도록 하고 있음.
     pthread_detach(t_id);
 
     printf("Connected client IP: %s \n", inet_ntoa(clnt_adr.sin_addr));
@@ -68,7 +78,7 @@ int main(int argc, char *argv[])
 void* handle_clnt(void *arg)
 {
   int  clnt_sock = *((int *)arg);
-  int  str_len   = 0;
+  int  str_len = 0, i;
   char msg[BUF_SIZE];
 
   while ((str_len = read(clnt_sock, msg, sizeof(msg))) != 0) {
@@ -92,7 +102,7 @@ void* handle_clnt(void *arg)
   return NULL;
 }
 
-// send to al
+// 연결된 모든 클라이언트에게 메시지를 전송하는 기능을 제공함.
 void send_msg(char *msg, int len)
 {
   int i;
