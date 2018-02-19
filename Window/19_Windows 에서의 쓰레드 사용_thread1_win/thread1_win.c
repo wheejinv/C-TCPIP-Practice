@@ -10,8 +10,8 @@ int             main(int argc, char *argv[])
   unsigned threadID;
   int param = 5;
 
-	// 쓰레드의 main 함수로 ThreadFunc 를
-	// 그리고 ThreadFunc에 변수 param의 주소값을 전달하면서 쓰레드의 생성 요구
+  // 쓰레드의 main 함수로 ThreadFunc 를
+  // 그리고 ThreadFunc에 변수 param의 주소값을 전달하면서 쓰레드의 생성 요구
   hThread = (HANDLE)_beginthreadex(NULL,
                                    0,
                                    ThreadFunc,
@@ -23,8 +23,9 @@ int             main(int argc, char *argv[])
     puts("_beginthreadex() error");
     return -1;
   }
-	// 리눅스의 sleep 함수는 초 단위로 블로킹 상태를 만들지만
-	// 윈도우 Sleep 함수는  1/1000초 단위로 블로킹 상태를 만든다.
+
+  // 리눅스의 sleep 함수는 초 단위로 블로킹 상태를 만들지만
+  // 윈도우 Sleep 함수는  1/1000초 단위로 블로킹 상태를 만든다.
   Sleep(3000);
   puts("end of main");
 
