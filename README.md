@@ -42,6 +42,13 @@
 `pthread_create, pthread_join, 워커 쓰레드 모델, 임계영역, 쓰레드 동기화 기법(Mutex, Semaphore), pthread_mutext_init, pthread_mutext_destroy, sem_post, sem_wait`
 
 ---
+## 윈도우 기반 프로그래밍을
+[CH 19\. Windows에서의 쓰레드 사용](./MD/CH19.md)<br>
+`커널 오브젝트, 단일 쓰레드 모델 vs 멀티 쓰레드 모델, 윈도우에서의 쓰레드 생성 방법, /MDd 환경 설정, CreateThread, _beginthreadex, 커널 오브 젝트의 상태, signaled 상태,  WaitForSingObject, WaitForMultipleObjects`
+
+
+---
+
 
 ## Linux
 

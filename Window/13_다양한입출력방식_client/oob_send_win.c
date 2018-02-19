@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <winsock2.h>
+#include <WinSock2.h>
 
 #define BUF_SIZE 30
 void ErrorHandling(char *message);
