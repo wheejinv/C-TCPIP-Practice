@@ -46,6 +46,8 @@
 [CH 19\. Windows에서의 쓰레드 사용](./MD/CH19.md)<br>
 `커널 오브젝트, 단일 쓰레드 모델 vs 멀티 쓰레드 모델, 윈도우에서의 쓰레드 생성 방법, /MDd 환경 설정, CreateThread, _beginthreadex, 커널 오브 젝트의 상태, signaled 상태,  WaitForSingObject, WaitForMultipleObjects`
 
+[CH 20\. Windows에서의 쓰레드 동기화](./MD/CH20.md)<br>
+`유저 모드, 커널 모드, CRITICAL_SECTION, 커널모드 동기화 기법, Mutex, Semaphore, Event 오브젝트 기반 동기화, 윈도우 기반의 멀티 쓰레드 서버`
 
 ---
 
