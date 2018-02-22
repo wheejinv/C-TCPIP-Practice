@@ -52,7 +52,7 @@ int  main(int argc, char *argv[])
 
   while (1)
   {
-    epoll_result = epoll_wait(fd_epoll, ep_event, EPOLL_SIZE, -1);
+    epoll_result = epoll_wait(fd_epoll,  , EPOLL_SIZE, -1);
 
     if (epoll_result == -1) {
       puts("epoll_wait() error");
