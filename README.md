@@ -50,7 +50,10 @@
 `유저 모드, 커널 모드, CRITICAL_SECTION, 커널모드 동기화 기법, Mutex, Semaphore, Event 오브젝트 기반 동기화, 윈도우 기반의 멀티 쓰레드 서버`
 
 [CH 21\. Asynchronous Notification IO 모델](./MD/CH21.md)<br>
-`...`
+`WSAEventSelect, WSACreateEvent, WSACloseEvent, WSAWaitForMultipleEvents, WSAEnumNetworkEvents, 구조체 WSANETWORKEVENTS`
+
+[CH 22\. Overlapped IO 모델](./MD/CH22.md)<br>
+`....`
 
 ---
 
