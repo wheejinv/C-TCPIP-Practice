@@ -46,22 +46,24 @@ int  main(int argc, char *argv[])
   dataBuf.len       = strlen(msg) + 1;
   dataBuf.buf       = msg;
 
-	// 이 문장에서 WSASend 함수가 SOCKET_ERROR를 반환하지 않으면,
-	// 데이터의 전송이 완료된 상황이니,
-	// 변수 sendBytes에 채워진 값은 의미를 갖는다.
+  // 이 문장에서 WSASend 함수가 SOCKET_ERROR를 반환하지 않으면,
+  // 데이터의 전송이 완료된 상황이니,
+  // 변수 sendBytes에 채워진 값은 의미를 갖는다.
   if (WSASend(hSocket, &dataBuf, 1, &sendBytes, 0, &overlapped,
               NULL) == SOCKET_ERROR) {
-		// WSAGetLastError 함수가 WSA_IO_PENDING를 반환한 경우에는
-		// 데이터의 전송이 완료되지는 않았지만 계속해서 진행중인 상태이다.
-		// 따라서 이 경우에는 변수 sendBytes에 채워진 값은 별 의미가 없다.
+    // WSAGetLastError 함수가 WSA_IO_PENDING를 반환한 경우에는
+    // 데이터의 전송이 완료되지는 않았지만 계속해서 진행중인 상태이다.
+    // 따라서 이 경우에는 변수 sendBytes에 채워진 값은 별 의미가 없다.
     if (WSAGetLastError() == WSA_IO_PENDING) {
       puts("Background data send");
-			// 데이터의 전송이 완료되면 45행을 통해서 등록된 Event 오브젝트가
-			// sognaled 상태가 되므로, WSAWaitForMultipleEvents 함수 호출을 통해서
-			// 데이터의 전송을 기다릴 수 있다.
+
+      // 데이터의 전송이 완료되면 45행을 통해서 등록된 Event 오브젝트가
+      // sognaled 상태가 되므로, WSAWaitForMultipleEvents 함수 호출을 통해서
+      // 데이터의 전송을 기다릴 수 있다.
       WSAWaitForMultipleEvents(1, &evObj, TRUE, WSA_INFINITE, FALSE);
-			// 데이터의 전송완료가 확인되면 WSAGetOverlappedResult 함수호출을 통해서
-			// 전송 결과를 확인할 수 있다.
+
+      // 데이터의 전송완료가 확인되면 WSAGetOverlappedResult 함수호출을 통해서
+      // 전송 결과를 확인할 수 있다.
       WSAGetOverlappedResult(hSocket, &overlapped, &sendBytes, FALSE, NULL);
     }
     else {
