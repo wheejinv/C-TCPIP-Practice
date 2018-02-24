@@ -59,18 +59,18 @@ int main(int argc, char *argv[])
   // 여섯번째 인자인 WSAOVERLAPPED 구조체 변수의 주소 값은 반드시 전달해야 한다.
   if (WSARecv(hRecvSock, &dataBuf, 1, &recvBytes, &flags, &overlapped,
               CompRoutine) == SOCKET_ERROR) {
-		// 데이터의 수신이 pending되었는지 확인.
+    // 데이터의 수신이 pending되었는지 확인.
     if (WSAGetLastError() == WSA_IO_PENDING) {
       puts("Background data receive");
     }
   }
 
-	// main 쓰레드를 alertable wait 상태로 두기 위한 함수호출.
-	// 이 함수의 호출을 위해서 불필요한 evObj 더미 오브젝트를 생성함.
-	// 이를 피하기 위해 SleepEx 함수를 사용할 수도 있음.
+  // main 쓰레드를 alertable wait 상태로 두기 위한 함수호출.
+  // 이 함수의 호출을 위해서 불필요한 evObj 더미 오브젝트를 생성함.
+  // 이를 피하기 위해 SleepEx 함수를 사용할 수도 있음.
   idx = WSAWaitForMultipleEvents(1, &evObj, FALSE, WSA_INFINITE, TRUE);
 
-	// 정상 완료인 겨ㅛㅇ우
+  // 정상 완료인 경우
   if (idx == WAIT_IO_COMPLETION) {
     puts("Overlapped I/O Completed");
   }

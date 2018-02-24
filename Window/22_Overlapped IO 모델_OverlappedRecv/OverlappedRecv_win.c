@@ -52,18 +52,18 @@ int  main(int argc, char *argv[])
   dataBuf.len       = BUF_SIZE;
   dataBuf.buf       = buf;
 
-	// WSARecv 함수가 SOCKET_ERROR를 반환하지 않으면, 데이터의 수신이 완료된
-	// 상황이다. 따라서 변수 recvBytes에 저장된 값은 의미를 갖는다.
+  // WSARecv 함수가 SOCKET_ERROR를 반환하지 않으면, 데이터의 수신이 완료된
+  // 상황이다. 따라서 변수 recvBytes에 저장된 값은 의미를 갖는다.
   if (WSARecv(hRecvSock, &dataBuf, 1, &recvBytes, &flags, &overlapped,
               NULL) == SOCKET_ERROR) {
     if (WSAGetLastError() == WSA_IO_PENDING) {
-			// 데이터의 수신이 진행중인 상황
+      // 데이터의 수신이 진행중인 상황
       puts("Background data receive");
 
-			// 데이터의 수신 완료를 확인.
+      // 데이터의 수신 완료를 확인.
       WSAWaitForMultipleEvents(1, &evObj, TRUE, WSA_INFINITE, FALSE);
 
-			// 데이터의 수신 결과를 확인.
+      // 데이터의 수신 결과를 확인.
       WSAGetOverlappedResult(hRecvSock, &overlapped, &recvBytes, FALSE, NULL);
     }
     else {
