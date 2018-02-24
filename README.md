@@ -55,8 +55,8 @@
 [CH 22\. Overlapped IO 모델](./MD/CH22.md)<br>
 `Overlapped IO 소켓의 생성, WSASend, WSARecv, WSABUF 구조체, WSAOVERLAPPED 구조체, WSAGetOverlappedResult, WSAGetLastError, Completion Routine`
 
-[CH 23\. IOCP 모델](./MD/CH23.md)<br>
-`...`
+[CH 23\. IOCP(Input Output Completion Port)](./MD/CH23.md)<br>
+`Overlapped IO를 기반으로 IOCP 서버 구현, Overlapped 모델에서 IOCP 모델로의 전환 이유, IOCP에서 제안하는 서버의 구현 모델`
 
 ---
 
