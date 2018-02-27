@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
     memset(lpOvLp, 0, sizeof(WSAOVERLAPPED));
 
     // PER_IO_DATA 구조체 변수를 동적 할당한 다음,
-    // 36행에서 생성된 소켓의 핸들정보를 저장하고 있음.
+    // 83행에서 생성된 소켓의 핸들정보를 저장하고 있음.
     // 이 소켓은 입출력 과정에서 105, 106행에 의해 초기화된 버퍼를 사용한다.
     hbInfo = (LPPER_IO_DATA)malloc(sizeof(PRE_IO_DATA));
     memset(hbInfo, 0, sizeof(PRE_IO_DATA));
@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
     // Completion Routine의 세 번째 매개변수에 전달된다.
     // 때문에 Completion Routine 함수 내에서는 입출력이 완료된 소켓의 핸들과 버퍼에
     // 접근할 수 있다.그리고 Completion Routine의 실행을 위해서
-    // 35행에서 SleepEx 함수를 반복 호출하고 있다.
+    // 79행에서 SleepEx 함수를 반복 호출하고 있다.
     WSARecv(hRecvSock, &(hbInfo->wsaBuf), 1, &recvBytes, &flag, lpOvLp,
             ReadRoutine);
   }
