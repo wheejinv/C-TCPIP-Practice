@@ -1,11 +1,14 @@
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<!-- TOC START min:1 max:3 link:false update:false -->
+- [C++]
+  - [Overloading과 Overriding의 차이]
+  - [다형성에 대해 설명하시오]
+  - [그럼 이건요]
 
-- [C++](#c)
-	- [Overloading과 Overriding의 차이](#overloading-overriding-)
-	- [다형성에 대해 설명하시오](#-)
-	- [그럼 이건요](#-)
+<!-- TOC END -->
 
-<!-- /TOC -->
+
+
+
 # C++
 
 ## Overloading과 Overriding의 차이
