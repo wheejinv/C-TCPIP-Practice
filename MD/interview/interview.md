@@ -1,12 +1,14 @@
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-	- [C++](#c)
-		- [Overloading과 Overriding의 차이](#overloading-overriding-)
+- [C++](#c)
+	- [Overloading과 Overriding의 차이](#overloading-overriding-)
+	- [다형성에 대해 설명하시오](#-)
+	- [그럼 이건요](#-)
 
 <!-- /TOC -->
-## C++
+# C++
 
-### Overloading과 Overriding의 차이
+## Overloading과 Overriding의 차이
 Overloading
 - 함수의 이름은 같으나 반환 타입이나 인자의 갯수, 인자의 타입이 다른경우 함수를 재정의 하는것
 
@@ -41,3 +43,10 @@ void Child :: whoAmI() // overriding
     printf("자식입니다.\n");
 }
 ```
+
+## 다형성에 대해 설명하시오
+ㄴㅁㅇㅁㄴㅇ<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+## 그럼 이건요
+<br><br><br><br><br><br><br><br><br><br><br><br>
