@@ -1,13 +1,11 @@
-<!-- TOC START min:1 max:3 link:false update:false -->
-- [C++]
-  - [Overloading과 Overriding의 차이]
-  - [다형성에 대해 설명하시오]
-  - [그럼 이건요]
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-<!-- TOC END -->
+- [C++](#c)
+	- [Overloading과 Overriding의 차이](#overloading-overriding-)
+	- [2.다형성에 대해 설명하시오](#2-)
+	- [3.그럼 이건요](#3-)
 
-
-
+<!-- /TOC -->
 
 # C++
 
@@ -47,9 +45,9 @@ void Child :: whoAmI() // overriding
 }
 ```
 
-## 다형성에 대해 설명하시오
+## 2.다형성에 대해 설명하시오
 ㄴㅁㅇㅁㄴㅇ<br><br><br><br><br><br><br><br><br><br><br><br>
 
 
-## 그럼 이건요
+## 3.그럼 이건요
 <br><br><br><br><br><br><br><br><br><br><br><br>
